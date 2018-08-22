@@ -3,6 +3,7 @@
     padding: 0;
 }
 
+
 .main{
     width: 100%;
     position: relative;
@@ -45,6 +46,10 @@
     outline: none;
 }
 
+#busNumber::placeholder{
+    color: rgba(198, 179, 157, 0.35);
+}
+
 .button{
     display: block;
     position: absolute;
@@ -78,9 +83,7 @@
 .map{
     width: 100%;
     position: relative;
-    height: 100%;
-    min-height: 700px;
-    max-height: 100%;
+    min-height: 800px;
     min-width: 400px;
 }
 
@@ -94,18 +97,27 @@
     padding: 7% 10% 5% 5%;
     min-width: 350px;
     position: relative;
-    height: 700px;
+    height: 800px;
     overflow: hidden;
     font-family: "Ubuntu Light";
 }
 
-@media only screen and (max-width: 750px){
+@media only screen and (max-width: 820px){
     .points{
         display: block;
     }
+
+    .map{
+        min-height: 700px;
+    }
+
+    #pointing{
+        min-height: 900px;
+    }
+
 }
 
-@media only screen and (max-width: 750px){
+@media only screen and (max-width: 820px){
     .main h1{
         top: 6%;
         font-size: 2em;
@@ -142,7 +154,7 @@
 .item{
     color: black;
     margin: 1px;
-    cursor: pointer;
+    /*cursor: pointer;*/
     padding: 9px;
     display: grid;
     border-top: solid #f14733 0.7px;
@@ -265,9 +277,10 @@ footer p:nth-child(2){
     padding: 10px;
 }
 
-.time{
+.time, .timenew{
     text-align: center;
     height: 100%;
+    cursor: pointer;
     vertical-align: middle;
 }
 
@@ -277,23 +290,14 @@ footer p:nth-child(2){
     line-height: 30px;
 }
 
-.time:active:before{
+.time:active:before, .timenew:active:before{
     content: 'Loading...';
 }
 
-.timenew{
-    text-align: center;
-    height: 100%;
-    vertical-align: middle;
-}
+
 
 .timenew:before{
     content: 'Update';
     color: #7a7a7a;
     line-height: 30px;
 }
-
-.timenew:active:before{
-    content: 'Loading...';
-}
-

@@ -12,7 +12,7 @@ class StopPoints extends React.Component{
 
         this.state = {
             stopPoints: '',
-            directionName: 'Choose a bus',
+            directionName: "Bus number wasn't entered",
             pointWithId: '',
             chose: false
         };
@@ -48,8 +48,9 @@ class StopPoints extends React.Component{
          }
 
         if(get.statusText === 'error'){
-            alert('Please enter correct bus number')
+            alert('Please enter a correct bus number')
         } else {
+            $('html, body').animate({ scrollTop: $('#stopPoints').offset().top }, 500);
             this.setState({
                 stopPoints: stopPoints,
                 directionName: directionName.replace('&harr;', '-'),
