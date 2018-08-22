@@ -9,17 +9,19 @@ class StopPoint extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            time: ''
+            time: '',
+            classTime: 'time'
         };
+
         this.showTime = this.showTime.bind(this)
+        this.changeShow = this.changeShow.bind(this)
     }
 
     showTime(e){
+        let time = ''
         const dom = $(e.target);
         const stopId = dom.attr('stationId');
         const bus = dom.attr('bus');
-        console.log(bus)
-        console.log(stopId);
         const api = `https://api.tfl.gov.uk/line/${bus}/arrivals`;
 
         $.ajax({
@@ -47,20 +49,37 @@ class StopPoint extends React.Component{
             });
 
             filter.sort();
-            const time = moment(filter[0]).format("HH:mm:ss");
-            dom.html(`<div>${time}</div>`);
-            dom.addClass("timenew").removeClass("time");
-
+            time = moment(filter[0]).format("HH:mm:ss");
         }
 
+        this.setState({
+            time: time,
+            classTime: 'timenew'
+        })
+
     }
+
+    changeShow(){
+        console.log('ddd')
+        this.setState({
+            time: '',
+            classTime: 'time'
+        })
+    }
+
+    componentDidMount() {
+        $('#forSendBusNumber').bind('click', this.changeShow);
+        $('#changeDirection').bind('click', this.changeShow);
+    };
 
     render(){
         return  (<div className="item">
                     <div className="letter"><p>{this.props.params.stopLetter}</p></div>
                     <div className="itemName"><p>{this.props.params.name}</p></div>
-                    <div stationId={this.props.params.id} onClick={this.showTime} bus={this.props.bus} className='time'>
-
+                    <div stationId={this.props.params.id} onClick={this.showTime} bus={this.props.bus} className={this.state.classTime}>
+                        <div>
+                         {this.state.time}
+                        </div>
                     </div>
             </div>)
     }

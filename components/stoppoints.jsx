@@ -42,7 +42,7 @@ class StopPoints extends React.Component{
          });
 
          function dataLoaded(data) {
-             console.log(data);
+
              stopPoints = data.stopPointSequences[0].stopPoint;
              directionName = data.orderedLineRoutes[0].name
          }
