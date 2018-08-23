@@ -22,7 +22,7 @@ class StopPoint extends React.Component{
         const dom = $(e.target);
         const stopId = dom.attr('stationId');
         const bus = dom.attr('bus');
-        const api = `https://api.tfl.gov.uk/line/${bus}/arrivals`;
+        const api = `https://api.tfl.gov.uk/line/${bus}/arrivals?app_id=6457c01d&app_key=2e6cdaded28f0bf7233733444686b192`;
 
         $.ajax({
             type: 'GET',

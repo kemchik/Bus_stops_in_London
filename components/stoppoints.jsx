@@ -30,7 +30,7 @@ class StopPoints extends React.Component{
     }
 
     getData(){
-        const api = `https://api.tfl.gov.uk/line/${this.busNumberFromInp}/route/sequence/${this.direction}`;
+        const api = `https://api.tfl.gov.uk/line/${this.busNumberFromInp}/route/sequence/${this.direction}?app_id=6457c01d&app_key=2e6cdaded28f0bf7233733444686b192`;
         let stopPoints = '';
         let directionName = '';
 
